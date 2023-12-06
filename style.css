@@ -1,3 +1,7 @@
+* {
+  font-family: "Poppins", Helvetica;
+}
+
 .container {
   display: flex;
   flex-direction: column;
@@ -9,17 +13,17 @@
   height: 559px;
   border-radius: 20px;
   background-color: #1a1d24;
-  /* 
-  
-  border-radius: 20px; */
 }
 
 #display {
+  display: flex;
   text-align: right;
+  align-items: center;
+  justify-content: center;
   height: 70px;
   line-height: 70px;
   padding: 16px 8px;
-  margin-bottom: 20px;
+  margin: 200px 0 0 200px;
   font-size: 1.5rem;
   color: white;
 }
