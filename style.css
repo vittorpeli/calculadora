@@ -1,9 +1,17 @@
 .container {
-  width: 283px;
-  height: 559px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
   margin: 10vh auto 0 auto;
   box-shadow: 0px 0px 43px 17px rgba(153, 153, 153, 1);
+  width: 283px;
+  height: 559px;
   border-radius: 20px;
+  background-color: #1a1d24;
+  /* 
+  
+  border-radius: 20px; */
 }
 
 #display {
@@ -11,26 +19,34 @@
   height: 70px;
   line-height: 70px;
   padding: 16px 8px;
-  font-size: 25px;
-  background-color: #1e212a;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  color: white;
 }
 
 .buttons {
   display: grid;
-  border-bottom: 1px solid #999;
-  border-left: 1px solid #999;
-  grid-template-colums: 1fr 1fr 1fr 1fr;
-}
-
-.buttons > div {
-  border-top: 1px solid #999;
-  border-right: 1px solid#999;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2.5px;
+  margin-bottom: 32px;
 }
 
 .button {
-  border: 0.5px solid #999;
-  line-height: 100px;
+  padding: 10px;
   text-align: center;
-  font-size: 25px;
+  border: 1.5px solid #14171e;
+  border-radius: 5px;
+  background-color: #14171e;
+  font-size: 1.3rem;
   cursor: pointer;
+  color: white;
+}
+
+#equals {
+  grid-row: span 2;
+  background-color: #1ec86e;
+}
+
+#equals:hover {
+  background-color: #1fc96f99;
 }
