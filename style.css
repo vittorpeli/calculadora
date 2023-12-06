@@ -46,6 +46,14 @@
   color: white;
 }
 
+.button:hover {
+  filter: brightness(160%);
+}
+
+.oprtr {
+  color: #17b963;
+}
+
 #equals {
   grid-row: span 2;
   background-color: #1ec86e;
