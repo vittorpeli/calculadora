@@ -1,40 +1,47 @@
 let display = document.getElementById('display');
-
-let buttons = Array.from(document.getElementsByClassName('button'));
-
-buttons.map(button => {
-  button.addEventListener('click', (e) => handleButtonClick(e.target.innerText))
-})
-
-document.addEventListener('keydown', (e) => {
-  const keyPressed = e.key
-
-  const button = buttons.find(btn => btn.innerText === keyPressed)
-
-  if(button) {
-    handleButtonClick(keyPressed)
-  }
-})
+let currentValue = '';
 
 function handleButtonClick(value) {
   switch(value) {
     case 'C':
-      display.innerText = '';
+      currentValue = '';
       break;
     case '=':
       try{
-        display.innerText = eval(display.innerText);
+        currentValue = eval(currentValue);
       } catch {
-        display.innerText = "Error"
+        currentValue = "Error"
       }
       break;
     case 'DEL':
-      if(display.innerText) {
-        display.innerText = display.innerText.slice(0, -1);
-      }
+      currentValue = currentValue.slice(0, -1)
       break;
     default: 
-      display.innerText += value;
+      currentValue += value;
   }  
+  updateDisplay();
 }
 
+function updateDisplay() {
+  display.innerText = currentValue || '0'
+}
+
+document.addEventListener('keydown', (e) => {
+  const keyPressed = e.key
+
+  if (keyPressed === 'c' || keyPressed === 'C'){
+    handleButtonClick('C');
+  }else if (keyPressed === 'Backspace') {
+    handleButtonClick('DEL');
+  }else if(!isNaN(keyPressed) || ['+', '-', '*','/', '%', '.'].includes(keyPressed)) {
+    handleButtonClick(keyPressed)
+  }else if (keyPressed === 'Enter') {
+    handleButtonClick('=')
+  }
+})
+
+let buttons = Array.from(document.getElementsByClassName('button'));
+
+buttons.forEach(button => {
+  button.addEventListener('click', () => handleButtonClick(button.innerText))
+})
