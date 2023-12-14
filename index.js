@@ -1,8 +1,29 @@
 let display = document.getElementById('display');
 let currentValue = '';
 
+const plusBtn = document.getElementById('plus');
+const minusBtn = document.getElementById('minus');
+const multiplyBtn = document.getElementById('multiply');
+const divideBtn = document.getElementById('divide');
+const percentBtn = document.getElementById('percent');
+
 function handleButtonClick(value) {
   switch(value) {
+    case '+':
+      currentValue += '+';
+      break;
+    case '-':
+      currentValue += '-';
+      break;
+    case 'x':
+      currentValue += '*';
+      break;
+    case '÷': 
+      currentValue += '/';
+      break;
+    case '%':
+      currentValue = (parseFloat(currentValue) / 100).toString();
+      break;
     case 'C':
       currentValue = '';
       break;
@@ -25,20 +46,6 @@ function handleButtonClick(value) {
 function updateDisplay() {
   display.innerText = currentValue || '0'
 }
-
-document.addEventListener('keydown', (e) => {
-  const keyPressed = e.key
-
-  if (keyPressed === 'c' || keyPressed === 'C'){
-    handleButtonClick('C');
-  }else if (keyPressed === 'Backspace') {
-    handleButtonClick('DEL');
-  }else if(!isNaN(keyPressed) || ['+', '-', '*','/', '%', '.'].includes(keyPressed)) {
-    handleButtonClick(keyPressed)
-  }else if (keyPressed === 'Enter') {
-    handleButtonClick('=')
-  }
-})
 
 let buttons = Array.from(document.getElementsByClassName('button'));
 
